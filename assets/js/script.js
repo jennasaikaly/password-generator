@@ -20,53 +20,54 @@
 
 // Write password to the #password input
 
-var lengthCharacter = function() {
-  var lengthPrompt = window.prompt(
+var lengthPrompt = function() {
+  debugger;
+  var lengthCharacter = window.prompt(
     "Welcome to Password Generator! To get started, please choose how long you would like your Password (8-128 characters) to be."
     ); 
-    if (!lengthPrompt) {
+    if (!lengthCharacter) {
       window.alert("Please make a selection!");
-      return lengthCharacter();
+      return lengthPrompt();
      }
 }
 
-var numberCharacter = function() {
-  var numberPrompt = window.prompt(
+var numberPrompt = function() {
+  var numberCharacter = window.prompt(
     "Would you like to include NUMBERS? Please press 1 for YES or 2 for NO"
     );
-    if (!numberPrompt) {
+    if (!numberCharacter) {
       window.alert("Please make a selection!");
-      return numberCharacter();
+      return numberPrompt();
     }
 }
 
-var upperCaseCharacter = function() {
-  var upperCasePrompt = window.prompt(
+var upperCasePrompt = function() {
+  var upperCaseCharacter = window.prompt(
     "Would you like to include UPPER-CASE LETTERS? Please press 1 for YES or 2 for NO"
     );
-    if (!upperCasePrompt) {
+    if (!upperCaseCharacter) {
       window.alert("Please make a selection!");
-      return upperCaseCharacter();
+      return upperCasePrompt();
   }
 }
 
-var lowerCaseCharacter = function() {
-  var lowerCasePrompt = window.prompt(
+var lowerCasePrompt = function() {
+  var lowerCaseCharacter = window.prompt(
     "Would you like to include LOWER-CASE LETTERS? Please press 1 for YES or 2 for NO"
     );
-    if (!lowerCasePrompt) {
+    if (!lowerCaseCharacter) {
       window.alert("Please make a selection!");
-      return lowerCaseCharacter();
+      return lowerCasePrompt();
   }
 }
 
-var specialCharacter = function() {
-  var specialCharPrompt = window.prompt(
+var specialCharPrompt = function() {
+  var specialCharacter = window.prompt(
     "Would you like to include a SPECIAL CHARACTER? Please press 1 for YES or 2 for NO"
     );
-    if (!specialCharPrompt) {
+    if (!specialCharacter) {
       window.alert("Please make a selection!");
-      return specialCharacter();
+      return specialCharPrompt();
   }
 }
 
@@ -76,11 +77,11 @@ var specialCharacter = function() {
   
   
 function writePassword() {
-      lengthCharacter();
-      numberCharacter();
-      upperCaseCharacter();
-      lowerCaseCharacter();
-      specialCharacter();
+      lengthPrompt();
+      numberPrompt();
+      upperCasePrompt();
+      lowerCasePrompt();
+      specialCharPrompt();
 
   
 
@@ -97,4 +98,3 @@ function generatePassword(){
 var generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-characterLength(); 
