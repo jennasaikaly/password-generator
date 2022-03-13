@@ -17,72 +17,61 @@
   
 
 
+/********************************/
+//      Gather Information
+/********************************/
 
 // Write password to the #password input
 
-var lengthPrompt = function() {
+function writePassword() {
   debugger;
-  var lengthCharacter = window.prompt(
+  var lengthOfPassword = window.prompt(
     "Welcome to Password Generator! To get started, please choose how long you would like your Password (8-128 characters) to be."
     ); 
-    if (!lengthCharacter) {
-      window.alert("Please make a selection!");
-      return lengthPrompt();
-     }
-}
+    
+    while (!lengthOfPassword || lengthOfPassword < 8 || lengthOfPassword > 128) {
+      lengthOfPassword = window.prompt("You made an incorrect selection.  Please choose a number between 8 and 128.");
+    } 
+  
 
-var numberPrompt = function() {
   var numberCharacter = window.prompt(
-    "Would you like to include NUMBERS? Please press 1 for YES or 2 for NO"
+    "Would you like to include NUMBERS? Please press 1 for YES or 0 for NO"
     );
-    if (!numberCharacter) {
-      window.alert("Please make a selection!");
-      return numberPrompt();
-    }
-}
+    while (!numberCharacter ||numberCharacter < 1 || numberCharacter > 2) {
+      numberCharacter = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+          }
+              
 
-var upperCasePrompt = function() {
-  var upperCaseCharacter = window.prompt(
-    "Would you like to include UPPER-CASE LETTERS? Please press 1 for YES or 2 for NO"
+  var upperCaseCharacter= window.prompt(
+    "Would you like to include UPPER-CASE CHARACTERS? Please press 1 for YES or 0 for NO"
     );
-    if (!upperCaseCharacter) {
-      window.alert("Please make a selection!");
-      return upperCasePrompt();
-  }
-}
+    while (!upperCaseCharacter ||upperCaseCharacter < 0 || upperCaseCharacter > 1) {
+      upperCaseCharacter = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+          }
 
-var lowerCasePrompt = function() {
+
   var lowerCaseCharacter = window.prompt(
-    "Would you like to include LOWER-CASE LETTERS? Please press 1 for YES or 2 for NO"
+    "Would you like to include LOWER-CASE LETTERS? Please press 1 for YES or 0 for NO"
     );
-    if (!lowerCaseCharacter) {
-      window.alert("Please make a selection!");
-      return lowerCasePrompt();
-  }
-}
+    while (!lowerCaseCharacter ||lowerCaseCharacter < 0 || lowerCaseCharacter > 1) {
+      lowerCaseCharacter = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+          }
 
-var specialCharPrompt = function() {
   var specialCharacter = window.prompt(
-    "Would you like to include a SPECIAL CHARACTER? Please press 1 for YES or 2 for NO"
+    "Would you like to include a SPECIAL CHARACTER? Please press 1 for YES or 0 for NO"
     );
-    if (!specialCharacter) {
-      window.alert("Please make a selection!");
-      return specialCharPrompt();
-  }
-}
+    while (!specialCharacter ||specialCharacter < 0 || specialCharacter > 1) {
+      specialCharacter = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+          }
+
 
 
 
 
   
   
-function writePassword() {
-      lengthPrompt();
-      numberPrompt();
-      upperCasePrompt();
-      lowerCasePrompt();
-      specialCharPrompt();
 
+      
   
 
  
