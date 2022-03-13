@@ -25,45 +25,48 @@
 
 function writePassword() {
   debugger;
-  var lengthOfPassword = window.prompt(
+  var passwordLengthChoice = window.prompt(
     "Welcome to Password Generator! To get started, please choose how long you would like your Password (8-128 characters) to be."
     ); 
     
-    while (!lengthOfPassword || lengthOfPassword < 8 || lengthOfPassword > 128) {
-      lengthOfPassword = window.prompt("You made an incorrect selection.  Please choose a number between 8 and 128.");
+    while ( passwordLengthChoice || passwordLengthChoice < 8 || passwordLengthChoice > 128) {
+     passwordLengthChoice = window.prompt("You made an incorrect selection.  Please choose a number between 8 and 128.");
     } 
   
 
-  var numberCharacter = window.prompt(
+  var numberChoice = window.prompt(
     "Would you like to include NUMBERS? Please press 1 for YES or 0 for NO"
     );
-    while (!numberCharacter ||numberCharacter < 1 || numberCharacter > 2) {
-      numberCharacter = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+    while ( numberChoice | numberChoice < 1 || numberChoice > 2) {
+     numberChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
           }
               
 
-  var upperCaseCharacter= window.prompt(
+  var upperCaseChoice= window.prompt(
     "Would you like to include UPPER-CASE CHARACTERS? Please press 1 for YES or 0 for NO"
     );
-    while (!upperCaseCharacter ||upperCaseCharacter < 0 || upperCaseCharacter > 1) {
-      upperCaseCharacter = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+    while (!upperCaseChoice ||upperCaseChoice < 0 || upperCaseChoice > 1) {
+      upperCaseChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
           }
 
 
-  var lowerCaseCharacter = window.prompt(
+  var lowerCaseChoice = window.prompt(
     "Would you like to include LOWER-CASE LETTERS? Please press 1 for YES or 0 for NO"
     );
-    while (!lowerCaseCharacter ||lowerCaseCharacter < 0 || lowerCaseCharacter > 1) {
-      lowerCaseCharacter = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+    while (!lowerCaseChoice ||lowerCaseChoice < 0 || lowerCaseChoice > 1) {
+      lowerCaseChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
           }
 
-  var specialCharacter = window.prompt(
+  var specialCharacterChoice = window.prompt(
     "Would you like to include a SPECIAL CHARACTER? Please press 1 for YES or 0 for NO"
     );
-    while (!specialCharacter ||specialCharacter < 0 || specialCharacter > 1) {
-      specialCharacter = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+    while (!specialCharacterChoice ||specialCharacterChoice < 0 || specialCharacterChoice > 1) {
+      specialCharacterChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
           }
 
+
+
+ characterSelectionArray = [];
 
 
 
