@@ -1,5 +1,5 @@
-// Assignment code here
 
+//my notes for myself
 
 // 1) click on the button, recieve series of prompts
 // 2) prompt #1 special characters   " !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
@@ -12,37 +12,33 @@
 //8) password is displayed as an alert or on the page;
 
 
+// Assignment code here
 
+/******************************/
+ // GENERATE PASSWORD FUNCTION
+/*****************************/
+function generatePassword() {
 
-  
+  //debugger;
 
-
-/********************************/
+ /********************************/
 //      Gather Information
 /********************************/
 
-// Write password to the #password input
-
-function writePassword() {
-  debugger;
   var passwordLengthChoice = window.prompt(
     "Welcome to Password Generator! To get started, please choose how long you would like your Password (8-128 characters) to be."
     ); 
     
     while ( !passwordLengthChoice || passwordLengthChoice < 8 || passwordLengthChoice > 128) {
-     passwordLengthChoice = window.prompt("You made an incorrect selection.  Please choose a number between 8 and 128.");
+    passwordLengthChoice = window.prompt("You made an incorrect selection.  Please choose a number between 8 and 128.");
     } 
   
-
-       
-
   var upperCaseChoice= window.prompt(
     "Would you like to include UPPER-CASE CHARACTERS? Please press 1 for YES or 0 for NO"
     );
     while (!upperCaseChoice ||upperCaseChoice < 0 || upperCaseChoice > 1) {
       upperCaseChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
           }
-
 
   var lowerCaseChoice = window.prompt(
     "Would you like to include LOWER-CASE LETTERS? Please press 1 for YES or 0 for NO"
@@ -64,7 +60,27 @@ function writePassword() {
       specialCharacterChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
           }
 
-
+/**************************/
+//CONFIRM CHOICES
+/**************************/
+//if they select "confirm" within the confirm window
+//selectionApproved = true;
+//selectionDenied = false;
+//
+var confirmChoices = window.confirm(
+  "Uppercase enabled: " + upperCaseChoice + 
+  "\nLowercase enabled: " + lowerCaseChoice +
+  "\nNumbers enabled: " + numberChoice +
+  "\nSpecial Characters enabled: " + specialCharacterChoice +
+  "\nLength of password: " +passwordLengthChoice
+);
+if (confirmChoices === false) {
+  window.alert("Please enter your selections again.");
+  generatePassword();
+}
+else {
+  writePassword();
+}        
 /************************************/
 //    ARRAY CODE
 /************************************/
@@ -93,25 +109,28 @@ if (specialCharacterChoice){
 
 /*************************/
   //GENERATE PASSWORD
-
 /*************************/
-var password = "";
-for (let i = 0; i < passwordLengthChoice; i++){
+
+  var password = "";
+  for (let i = 0; i < passwordLengthChoice; i++){
   password += characterSelectionArray[Math.floor(Math.random() * characterSelectionArray.length)]
+  }
 }
-
-
-
-
+/**********************/
+// WRITE PASSWORD FUNCTION 
+/**********************/
+// Write password to the #password input
+function writePassword(){
+  debugger;
   var password = generatePassword(passwordLengthChoice,numberChoice,specialCharacterChoice,upperCaseChoice,lowerCaseChoice);
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
 
-function generatePassword(){
-}
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
