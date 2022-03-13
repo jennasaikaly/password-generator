@@ -29,18 +29,12 @@ function writePassword() {
     "Welcome to Password Generator! To get started, please choose how long you would like your Password (8-128 characters) to be."
     ); 
     
-    while ( passwordLengthChoice || passwordLengthChoice < 8 || passwordLengthChoice > 128) {
+    while ( !passwordLengthChoice || passwordLengthChoice < 8 || passwordLengthChoice > 128) {
      passwordLengthChoice = window.prompt("You made an incorrect selection.  Please choose a number between 8 and 128.");
     } 
   
 
-  var numberChoice = window.prompt(
-    "Would you like to include NUMBERS? Please press 1 for YES or 0 for NO"
-    );
-    while ( numberChoice | numberChoice < 1 || numberChoice > 2) {
-     numberChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
-          }
-              
+       
 
   var upperCaseChoice= window.prompt(
     "Would you like to include UPPER-CASE CHARACTERS? Please press 1 for YES or 0 for NO"
@@ -56,7 +50,13 @@ function writePassword() {
     while (!lowerCaseChoice ||lowerCaseChoice < 0 || lowerCaseChoice > 1) {
       lowerCaseChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
           }
-
+  var numberChoice = window.prompt(
+    "Would you like to include NUMBERS? Please press 1 for YES or 0 for NO"
+    );
+    while ( !numberChoice | numberChoice < 1 || numberChoice > 2) {
+    numberChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+          }
+  
   var specialCharacterChoice = window.prompt(
     "Would you like to include a SPECIAL CHARACTER? Please press 1 for YES or 0 for NO"
     );
@@ -70,22 +70,40 @@ function writePassword() {
 /************************************/
 characterSelectionArray = [];
 
-lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 numbers = ["1","2","3","4","5","6","7","8","9","0"];
 specialCharacters = ["!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~"];
 
+if (upperCaseChoice){
+  characterSelectionArray.push(upperCase);
+}
+
+if (lowerCaseChoice){
+  characterSelectionArray.push(lowerCase);
+}
+
+if (numberChoice){
+  characterSelectionArray.push(numbers);
+}
+
+if (specialCharacterChoice){
+  characterSelectionArray.push(specialCharacters);
+} 
+
+/*************************/
+  //GENERATE PASSWORD
+
+/*************************/
+var password = "";
+for (let i = 0; i < passwordLengthChoice; i++){
+  password += characterSelectionArray[Math.floor(Math.random() * characterSelectionArray.length)]
+}
 
 
 
-  
-  
 
-      
-  
-
- 
-  var password = generatePassword();
+  var password = generatePassword(passwordLengthChoice,numberChoice,specialCharacterChoice,upperCaseChoice,lowerCaseChoice);
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
