@@ -36,25 +36,33 @@ function generatePassword() {
     } 
   
    else {
-   var upperCaseChoice= window.confirm(
-    "Would you like to include UPPER-CASE CHARACTERS? Please press OK for YES or CANCEL for NO"
+   var upperCaseChoice= window.prompt(
+    "Would you like to include UPPER-CASE CHARACTERS? Please press 1 for YES or 0 for NO"
     );
-    
+    if (!upperCaseChoice ||upperCaseChoice < 0 || upperCaseChoice > 1) {
+      upperCaseChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+          }
 
-  var lowerCaseChoice = window.confirm(
-    "Would you like to include LOWER-CASE LETTERS? Please press OK for YES or CANCEL for NO"
+  var lowerCaseChoice = window.prompt(
+    "Would you like to include LOWER-CASE LETTERS? Please press 1 for YES or 0 for NO"
     );
-    
-  var numberChoice = window.confirm(
-    "Would you like to include NUMBERS?Please press OK for YES or CANCEL for NO"
+    if (!lowerCaseChoice ||lowerCaseChoice < 0 || lowerCaseChoice > 1) {
+      lowerCaseChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+          }
+  var numberChoice = window.prompt(
+    "Would you like to include NUMBERS? Please press 1 for YES or 0 for NO"
     );
-   
+    if ( !numberChoice | numberChoice < 1 || numberChoice > 2) {
+    numberChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+          }
   
-  var specialCharacterChoice = window.confirm(
-    "Would you like to include a SPECIAL CHARACTER? Please press OK for YES or CANCEL for NO"
+  var specialCharacterChoice = window.prompt(
+    "Would you like to include a SPECIAL CHARACTER? Please press 1 for YES or 0 for NO"
     );
-    
-  }       
+    if (!specialCharacterChoice ||specialCharacterChoice < 0 || specialCharacterChoice > 1) {
+      specialCharacterChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
+          }
+        }       
 /**************************/
 //CONFIRM CHOICES
 /**************************/
@@ -63,8 +71,7 @@ function generatePassword() {
 //selectionDenied = false;
 //
 var confirmChoices = window.confirm(
-  "Please confirm your choices! "  + 
-  "\nUppercase enabled: " + upperCaseChoice + 
+  "Uppercase enabled: " + upperCaseChoice + 
   "\nLowercase enabled: " + lowerCaseChoice +
   "\nNumbers enabled: " + numberChoice +
   "\nSpecial Characters enabled: " + specialCharacterChoice +
@@ -87,22 +94,22 @@ numbers = ["1","2","3","4","5","6","7","8","9","0"];
 specialCharacters = ["!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~"];
 
 
-if (upperCaseChoice){
+if (upperCaseChoice === 1){
   characterSelectionArray = characterSelectionArray.concat(upperCase);
    
 }
 
-if (lowerCaseChoice){
+if (lowerCaseChoice === 1){
   characterSelectionArray = characterSelectionArray.concat(lowerCase);
     
 
 }
 
-if (numberChoice){
+if (numberChoice === 1){
   characterSelectionArray = characterSelectionArray.concat(numbers);
 }
 
-if (specialCharacterChoice){
+if (specialCharacterChoice === 1){
   characterSelectionArray = characterSelectionArray.concat(specialCharacters);
 } 
 
@@ -112,7 +119,7 @@ if (specialCharacterChoice){
 
 var pwd ="";
 for(i = 0; i < passwordLengthChoice; i++) {
-  const random = characterSelectionArray[Math.floor(Math.random() * characterSelectionArray.length)];
+  const random = characterSelectionArray[Math.floor(Math.random() * characterSelectionArray.length-1)];
   pwd += random
 }
 return pwd;
@@ -130,8 +137,7 @@ function writePassword(){
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
-
-
+ 
 
 
 // Get references to the #generate element
