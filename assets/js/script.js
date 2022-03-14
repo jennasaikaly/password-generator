@@ -63,7 +63,8 @@ function generatePassword() {
 //selectionDenied = false;
 //
 var confirmChoices = window.confirm(
-  "Uppercase enabled: " + upperCaseChoice + 
+  "Please confirm your choices! "  + 
+  "\nUppercase enabled: " + upperCaseChoice + 
   "\nLowercase enabled: " + lowerCaseChoice +
   "\nNumbers enabled: " + numberChoice +
   "\nSpecial Characters enabled: " + specialCharacterChoice +
@@ -86,22 +87,22 @@ numbers = ["1","2","3","4","5","6","7","8","9","0"];
 specialCharacters = ["!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~"];
 
 
-if (upperCaseChoice === 1){
+if (upperCaseChoice){
   characterSelectionArray = characterSelectionArray.concat(upperCase);
    
 }
 
-if (lowerCaseChoice === 1){
+if (lowerCaseChoice){
   characterSelectionArray = characterSelectionArray.concat(lowerCase);
     
 
 }
 
-if (numberChoice === 1){
+if (numberChoice){
   characterSelectionArray = characterSelectionArray.concat(numbers);
 }
 
-if (specialCharacterChoice === 1){
+if (specialCharacterChoice){
   characterSelectionArray = characterSelectionArray.concat(specialCharacters);
 } 
 
@@ -111,7 +112,7 @@ if (specialCharacterChoice === 1){
 
 var pwd ="";
 for(i = 0; i < passwordLengthChoice; i++) {
-  const random = characterSelectionArray[Math.floor(Math.random() * characterSelectionArray.length-1)];
+  const random = characterSelectionArray[Math.floor(Math.random() * characterSelectionArray.length)];
   pwd += random
 }
 return pwd;
