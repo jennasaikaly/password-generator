@@ -11,6 +11,6 @@
 *Started code included HTML AND CSS
 
 ## Deployed Page
-https://jennasaikaly.github.io/portfolio/
+https://jennasaikaly.github.io/password-generator/
 
 ![Screenshot 2022-03-13 202154](https://user-images.githubusercontent.com/99379999/158089475-3fbb85e5-8716-4698-afc7-b9038ba4614c.jpg)
