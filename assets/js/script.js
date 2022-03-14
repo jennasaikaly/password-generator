@@ -14,6 +14,8 @@
 
 // Assignment code here
 
+
+
 /******************************/
  // GENERATE PASSWORD FUNCTION
 /*****************************/
@@ -29,37 +31,30 @@ function generatePassword() {
     "Welcome to Password Generator! To get started, please choose how long you would like your Password (8-128 characters) to be."
     ); 
     
-    while ( !passwordLengthChoice || passwordLengthChoice < 8 || passwordLengthChoice > 128) {
+    if (!passwordLengthChoice || passwordLengthChoice < 8 || passwordLengthChoice > 128) {
     passwordLengthChoice = window.prompt("You made an incorrect selection.  Please choose a number between 8 and 128.");
     } 
   
-  var upperCaseChoice= window.prompt(
-    "Would you like to include UPPER-CASE CHARACTERS? Please press 1 for YES or 0 for NO"
+   else {
+   var upperCaseChoice= window.confirm(
+    "Would you like to include UPPER-CASE CHARACTERS? Please press OK for YES or CANCEL for NO"
     );
-    while (!upperCaseChoice ||upperCaseChoice < 0 || upperCaseChoice > 1) {
-      upperCaseChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
-          }
+    
 
-  var lowerCaseChoice = window.prompt(
-    "Would you like to include LOWER-CASE LETTERS? Please press 1 for YES or 0 for NO"
+  var lowerCaseChoice = window.confirm(
+    "Would you like to include LOWER-CASE LETTERS? Please press OK for YES or CANCEL for NO"
     );
-    while (!lowerCaseChoice ||lowerCaseChoice < 0 || lowerCaseChoice > 1) {
-      lowerCaseChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
-          }
-  var numberChoice = window.prompt(
-    "Would you like to include NUMBERS? Please press 1 for YES or 0 for NO"
+    
+  var numberChoice = window.confirm(
+    "Would you like to include NUMBERS?Please press OK for YES or CANCEL for NO"
     );
-    while ( !numberChoice | numberChoice < 1 || numberChoice > 2) {
-    numberChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
-          }
+   
   
-  var specialCharacterChoice = window.prompt(
-    "Would you like to include a SPECIAL CHARACTER? Please press 1 for YES or 0 for NO"
+  var specialCharacterChoice = window.confirm(
+    "Would you like to include a SPECIAL CHARACTER? Please press OK for YES or CANCEL for NO"
     );
-    while (!specialCharacterChoice ||specialCharacterChoice < 0 || specialCharacterChoice > 1) {
-      specialCharacterChoice = window.prompt("Please make a selection! 1 for YES or 0 for NO");
-          }
-
+    
+  }       
 /**************************/
 //CONFIRM CHOICES
 /**************************/
@@ -72,18 +67,17 @@ var confirmChoices = window.confirm(
   "\nLowercase enabled: " + lowerCaseChoice +
   "\nNumbers enabled: " + numberChoice +
   "\nSpecial Characters enabled: " + specialCharacterChoice +
-  "\nLength of password: " +passwordLengthChoice
+  "\nLength of password: " + passwordLengthChoice
 );
 if (confirmChoices === false) {
   window.alert("Please enter your selections again.");
   generatePassword();
 }
-else {
-  writePassword();
-}        
+debugger;     
 /************************************/
 //    ARRAY CODE
 /************************************/
+
 characterSelectionArray = [];
 
 upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -91,38 +85,47 @@ lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q"
 numbers = ["1","2","3","4","5","6","7","8","9","0"];
 specialCharacters = ["!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~"];
 
-if (upperCaseChoice){
-  characterSelectionArray.push(upperCase);
+
+if (upperCaseChoice === 1){
+  characterSelectionArray = characterSelectionArray.concat(upperCase);
+   
 }
 
-if (lowerCaseChoice){
-  characterSelectionArray.push(lowerCase);
+if (lowerCaseChoice === 1){
+  characterSelectionArray = characterSelectionArray.concat(lowerCase);
+    
+
 }
 
-if (numberChoice){
-  characterSelectionArray.push(numbers);
+if (numberChoice === 1){
+  characterSelectionArray = characterSelectionArray.concat(numbers);
 }
 
-if (specialCharacterChoice){
-  characterSelectionArray.push(specialCharacters);
+if (specialCharacterChoice === 1){
+  characterSelectionArray = characterSelectionArray.concat(specialCharacters);
 } 
 
 /*************************/
   //GENERATE PASSWORD
 /*************************/
 
-  var password = "";
-  for (let i = 0; i < passwordLengthChoice; i++){
-  password += characterSelectionArray[Math.floor(Math.random() * characterSelectionArray.length)]
-  }
+var pwd ="";
+for(i = 0; i < passwordLengthChoice; i++) {
+  const random = characterSelectionArray[Math.floor(Math.random() * characterSelectionArray.length-1)];
+  pwd += random
+}
+return pwd;
+
+
+  
 }
 /**********************/
 // WRITE PASSWORD FUNCTION 
 /**********************/
 // Write password to the #password input
 function writePassword(){
-  debugger;
-  var password = generatePassword(passwordLengthChoice,numberChoice,specialCharacterChoice,upperCaseChoice,lowerCaseChoice);
+  
+  var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
@@ -132,5 +135,6 @@ function writePassword(){
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);
+generateBtn.addEventListener("click", writePassword);
